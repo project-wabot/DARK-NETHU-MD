@@ -15,7 +15,8 @@ let des = `*👋 Hello ${pushname} I'm alive now*
 
 *╭─「 ALIVE 」
 *│◈ 𝚁𝚄𝙽𝚃𝙸𝙼𝙴 -* ${runtime(process.uptime())}
-*│◈ 𝚁𝙰𝙼 𝚄𝚂𝙰𝙶𝙴 -* 66.24MB / 126777MB
+*│◈ 𝚁𝙰𝙼 𝚄𝚂𝙰𝙶𝙴 -* ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB / ${Math.round(require('os').totalmem / 1024 / 1024)}MB
+*│◈ ᴘʟᴀᴛꜰᴏʀᴍ : ${os.hostname()}*
 *╰──────────●●►*
 *╭──────────●●►*
 *│ 𝚄𝙿𝙳𝙰𝚃𝙴 𝙲𝙷𝙰𝙽𝙿𝙾𝙽𝙴𝙻:* https://whatsapp.com/channel/0029VagCogPGufJ3kZWjsW3A
