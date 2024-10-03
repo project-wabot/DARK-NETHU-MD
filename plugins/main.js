@@ -354,7 +354,6 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
     }
 })
 //================ run time ======================
-const {runtime} = require('../lib/functions')
 
 cmd({
     pattern: "runtime",
