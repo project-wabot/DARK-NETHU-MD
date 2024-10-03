@@ -333,5 +333,5 @@ let status =`
     
 > ᴘᴏᴡᴇʀᴇᴅ ʙʏ ɴᴇᴛʜᴍɪᴋᴀ ᴍᴀɪɴ
 `
-const imageUrl='https://iili.io/dZnmyB9.jpg';
+const imageUrl='https://iili.io/dbFAKoG.jpg';
     await conn.sendMessage(from,{image:{url:imageUrl},caption:status},{quoted:mek||null})}catch(e){console.log(e);reply(`Error: ${e}`);}});
