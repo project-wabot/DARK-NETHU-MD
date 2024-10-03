@@ -7,36 +7,38 @@ cmd({
     pattern: "menu",
     alias: ["list"],
     desc: "menu the bot",
-    react: "📜",
+    react: "📑",
     category: "main"
 },
 async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
     try {
         let desc = `*👋 Hello ${pushname}*
 
-*╭─「 ᴄᴏᴍᴍᴀɴᴅ ᴘᴀɴᴇʟ」*
-*│◈ ʀᴜɴᴛɪᴍᴇ : ${runtime(process.uptime())}*
-*│◈ ʀᴀᴍ ᴜꜱᴀɢᴇ : ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB / ${Math.round(require('os').totalmem / 1024 / 1024)}MB*
-*│◈ ᴘʟᴀᴛꜰᴏʀᴍ : ${os.hostname()}*
-*│◈ ᴠᴇʀꜱɪᴏɴ : 1.0.0*
+*╭─「 ᴄᴏᴍᴍᴀɴᴅ ᴘᴀɴᴇʟ 」*
+*│◈ ʀᴜɴᴛɪᴍᴇ :* ${runtime(process.uptime())}
+*│◈ ʀᴀᴍ ᴜꜱᴀɢᴇ :* ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB / ${Math.round(require('os').totalmem / 1024 / 1024)}MB
 *╰──────────●●►*
+*╭──────────●●►*
+*│⚜️ LIST MENU*
+*│   ───────*
+*│ 1   OWNER*
+*│ 2   CONVERT*
+*│ 3   AI*
+*│ 4   SEARCH*
+*│ 5   DOWNLOAD*
+*│ 6   FUN*
+*│ 7   MAIN*
+*│ 8   GROUP*
+*│ 9   OTHER*
+*╰───────────●●►*
 
-*╭╼╼╼╼╼╼╼╼╼╼*
-*├ 1 • OWNER*
-*├ 2 • CONVERT*
-*├ 3 • AI*
-*├ 4 • SEARCH*
-*├ 5 • DOWNLOAD*
-*├ 6 • MAIN*
-*├ 7 • GROUP*
-*├ 8 • FUN*
-*├ 9 • TOOLS*
-*├ 10 • OTHER*
-*╰╼╼╼╼╼╼╼╼╼╼*
+*🔢 Reply the Number you want to select*
 
-_*🌟 Reply with the Number you want to select*_
+💻 *GitHub:*  https://github.com/project-wabot/DARK-NETHU-MD
 
-*©Qᴜᴇᴇɴ ᴋʏʟɪᴇ-ᴍᴅ ʙʏ ꜱᴀʜᴀꜱ ᴛᴇᴄʜッ*`;
+👩‍💻 *Channel:* https://whatsapp.com/channel/0029VagCogPGufJ3kZWjsW3A
+
+> ᴘᴀᴡᴇʀᴇᴅ ʙʏ ɴᴇᴛʜᴍɪᴋᴀ ᴍᴀɪɴ`;
 
         const vv = await conn.sendMessage(from, { image: { url: "https://files.catbox.moe/4k5o8f.jpg"}, caption: desc }, { quoted: mek });
 
@@ -49,40 +51,40 @@ _*🌟 Reply with the Number you want to select*_
             if (msg.message.extendedTextMessage.contextInfo && msg.message.extendedTextMessage.contextInfo.stanzaId === vv.key.id) {
                 switch (selectedOption) {
                     case '1':
-                        reply(`*◈╾──────OWNER COMMAND LIST──────╼◈*
+                        reply(`*◈╾──NETHU OWNER MENU──╼◈*
 
 ╭────────●●►
 │ • *restart* 
 ╰────────────────────●●►
 
-⭓ *Total Commands List OWNER: 1*
+*💻 Github :* https://github.com/project-wabot/DARK-NETHU-MD
 
-*©Qᴜᴇᴇɴ ᴋʏʟɪᴇ-ᴍᴅ ʙʏ ꜱᴀʜᴀꜱ ᴛᴇᴄʜッ*`);
+> ᴘᴀᴡᴇʀᴇᴅ ʙʏ ɴᴇᴛʜᴍɪᴋᴀ ᴍᴀɪɴ`);
                         break;
                     case '2':               
-                        reply(`*◈╾──────CONVERT COMMAND LIST──────╼◈*
+                        reply(`*◈╾──NETHU CONVERT MENU──╼◈*
 
 ╭────────●●►
 │ • *convert* 
 ╰────────────────────●●►
 
-⭓ *Total Commands List CONVERT: 1*
+*💻 Github :* https://github.com/project-wabot/DARK-NETHU-MD
 
-*©Qᴜᴇᴇɴ ᴋʏʟɪᴇ-ᴍᴅ ʙʏ ꜱᴀʜᴀꜱ ᴛᴇᴄʜッ*`);
+> ᴘᴀᴡᴇʀᴇᴅ ʙʏ ɴᴇᴛʜᴍɪᴋᴀ ᴍᴀɪɴ`);
                         break;
                     case '3':               
-                        reply(`*◈╾──────AI COMMAND LIST──────╼◈*
+                        reply(`*◈╾──NETHU AI MENU──╼◈*
 
 ╭────────●●►
 │ • *ai* 
 ╰────────────────────●●►
 
-⭓ *Total Commands List AI: 1*
+*💻 Github :* https://github.com/project-wabot/DARK-NETHU-MD
 
-*©Qᴜᴇᴇɴ ᴋʏʟɪᴇ-ᴍᴅ ʙʏ ꜱᴀʜᴀꜱ ᴛᴇᴄʜッ*`);
+> ᴘᴀᴡᴇʀᴇᴅ ʙʏ ɴᴇᴛʜᴍɪᴋᴀ ᴍᴀɪɴ`);
                         break;
                     case '4':               
-                        reply(`*◈╾──────SEARCH COMMAND LIST──────╼◈*
+                        reply(`*◈╾──NETHU SEARCH MENU──╼◈*
 
 ╭────────●●►
 │ • *yts* 
@@ -91,12 +93,12 @@ _*🌟 Reply with the Number you want to select*_
 │ • *srepo* 
 ╰────────────────────●●►
 
-⭓ *Total Commands List SEARCH: 2*
+*💻 Github :* https://github.com/project-wabot/DARK-NETHU-MD
 
-*©Qᴜᴇᴇɴ ᴋʏʟɪᴇ-ᴍᴅ ʙʏ ꜱᴀʜᴀꜱ ᴛᴇᴄʜッ*`);
+> ᴘᴀᴡᴇʀᴇᴅ ʙʏ ɴᴇᴛʜᴍɪᴋᴀ ᴍᴀɪɴ`);
                         break;
                     case '5':               
-                        reply(`*◈╾──────DOWNLOAD COMMAND LIST──────╼◈*
+                        reply(`*◈╾──NETHU DOWNLOAD MENU──╼◈*
 
 ╭────────●●►
 │ • *apk* 
@@ -141,12 +143,12 @@ _*🌟 Reply with the Number you want to select*_
 │ • *img* 
 ╰────────────────────●●►
 
-⭓ *Total Commands List DOWNLOAD: 14*
+*💻 Github :* https://github.com/project-wabot/DARK-NETHU-MD
 
-*©Qᴜᴇᴇɴ ᴋʏʟɪᴇ-ᴍᴅ ʙʏ ꜱᴀʜᴀꜱ ᴛᴇᴄʜッ*`);
+> ᴘᴀᴡᴇʀᴇᴅ ʙʏ ɴᴇᴛʜᴍɪᴋᴀ ᴍᴀɪɴ`);
                         break;
                     case '6':               
-                        reply(`*◈╾──────MAIN COMMAND LIST──────╼◈*
+                        reply(`*◈╾──NETHU MAIN MENU──╼◈*
 
 ╭────────●●►
 │ • *alive* 
@@ -173,12 +175,12 @@ _*🌟 Reply with the Number you want to select*_
 │ • *runtime* 
 ╰────────────────────●●►
 
-⭓ *Total Commands List MAIN: 8*
+*💻 Github :* https://github.com/project-wabot/DARK-NETHU-MD
 
-*©Qᴜᴇᴇɴ ᴋʏʟɪᴇ-ᴍᴅ ʙʏ ꜱᴀʜᴀꜱ ᴛᴇᴄʜッ*`);
+> ᴘᴀᴡᴇʀᴇᴅ ʙʏ ɴᴇᴛʜᴍɪᴋᴀ ᴍᴀɪɴ`);
                         break;
                     case '7':               
-                        reply(`*◈╾──────GROUP COMMAND LIST──────╼◈*
+                        reply(`*◈╾──NETHU GROUP MENU──╼◈*
 
 ╭────────●●►
 │ • *promote* 
@@ -214,12 +216,12 @@ _*🌟 Reply with the Number you want to select*_
 │ • *gname* 
 ╰────────────────────●●►
 
-⭓ *Total Commands List GROUP: 11*
+*💻 Github :* https://github.com/project-wabot/DARK-NETHU-MD
 
-*©Qᴜᴇᴇɴ ᴋʏʟɪᴇ-ᴍᴅ ʙʏ ꜱᴀʜᴀꜱ ᴛᴇᴄʜッ*`);
+> ᴘᴀᴡᴇʀᴇᴅ ʙʏ ɴᴇᴛʜᴍɪᴋᴀ ᴍᴀɪɴ`);
                        break;
                     case '8':               
-                        reply(`*◈╾──────FUN COMMAND LIST──────╼◈*
+                        reply(`*◈╾──NETHU FUN MENU──╼◈*
 
 ╭────────●●►
 │ • *dog* 
@@ -234,13 +236,13 @@ _*🌟 Reply with the Number you want to select*_
 │ • *quote* 
 ╰────────────────────●●►
 
-⭓ *Total Commands List FUN: 4*
+*💻 Github :* https://github.com/project-wabot/DARK-NETHU-MD
 
-*©Qᴜᴇᴇɴ ᴋʏʟɪᴇ-ᴍᴅ ʙʏ ꜱᴀʜᴀꜱ ᴛᴇᴄʜッ*`);
+> ᴘᴀᴡᴇʀᴇᴅ ʙʏ ɴᴇᴛʜᴍɪᴋᴀ ᴍᴀɪɴ`);
 
                         break;
-                    case '10':               
-                        reply(`*◈╾──────OTHER COMMAND LIST──────╼◈*
+                    case '9':               
+                        reply(`*◈╾──NETHU OTHER MENU──╼◈*
 
 ╭────────●●►
 │ • *githubstalk* 
@@ -252,9 +254,9 @@ _*🌟 Reply with the Number you want to select*_
 │ • *weather* 
 ╰────────────────────●●►
 
-⭓ *Total Commands List OTHER: 3*
+*💻 Github :* https://github.com/project-wabot/DARK-NETHU-MD
 
-*©Qᴜᴇᴇɴ ᴋʏʟɪᴇ-ᴍᴅ ʙʏ ꜱᴀʜᴀꜱ ᴛᴇᴄʜッ*`);
+> ᴘᴀᴡᴇʀᴇᴅ ʙʏ ɴᴇᴛʜᴍɪᴋᴀ ᴍᴀɪɴ`);
 
 
                         break;
