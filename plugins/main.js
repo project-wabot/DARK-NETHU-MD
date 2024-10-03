@@ -1,6 +1,6 @@
 
 //========= alive command ===========
-const config = require('../config')
+const {readEnv} require('./lib/database')
 const {cmd , commands} = require('../command')
 
 cmd({
@@ -28,6 +28,7 @@ let des = `*👋 Hello ${pushname} I'm alive now*
 
 > ᴘᴏᴠᴇʀᴇᴅ ʙʏ ɴᴇᴛʜᴍɪᴋᴀ ᴍᴀɪɴ
 `
+
 return await conn.sendMessage(from,{image: {url: `https://iili.io/dbFAKoG.jpg`},caption: des},{quoted: mek})
 }catch(e){
 console.log(e)
