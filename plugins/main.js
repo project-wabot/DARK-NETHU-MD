@@ -96,7 +96,6 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
 *💻 Github :* https://github.com/project-wabot/DARK-NETHU-MD
 
 > ᴘᴀᴡᴇʀᴇᴅ ʙʏ ɴᴇᴛʜᴍɪᴋᴀ ᴍᴀɪɴ`);
-       const vv = await conn.sendMessage(from, { image: { url: "https://iili.io/dbFAKoG.jpg"}, caption: desc }, { quoted: mek });
                         break;
                     case '2':               
                         reply(`*◈╾──NETHU CONVERT MENU──╼◈*
@@ -346,8 +345,6 @@ cmd({
 },
 async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
     try {
-        const startTime = Date.now()
-        const message = await conn.sendMessage(from, { text: '𝘛𝘦𝘴𝘵𝘪𝘯𝘨 𝘱𝘪𝘯𝘨...' })
         const endTime = Date.now()
         const ping = endTime - startTime
         await conn.sendMessage(from, { text: `*📍 Pong : ${ping}ms*` }, { quoted: message })
@@ -356,3 +353,233 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
         reply(`${e}`)
     }
 })
+//================ run time ======================
+const {runtime} = require('../lib/functions')
+
+cmd({
+    pattern: "runtime",
+    alias: ["status","botinfo"],
+    desc: "check up time",
+    category: "main",
+    react: "⏰",
+    filename: __filename
+},
+async(conn, mek, m,{from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply}) => {
+try{ 
+
+let status =` *🚀 Runtime:-  ${runtime(process.uptime())}* `
+return reply(`${status}`)
+}catch(e){
+console.log(e)
+reply(`${e}`)
+}
+})
+
+//================= abio command ========================
+
+cmd({
+
+    pattern: "about",
+
+    desc: "To get the bot informations.",
+
+    react: "ℹ️",
+
+    category: "main",
+
+    filename: __filename
+
+},
+
+async(conn, mek, m,{from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply}) => {
+
+try{
+
+
+
+let about = ` *👋 𝗛𝗘𝗟𝗟𝗢 𝗧𝗛𝗘𝗜𝗥${senderNumber}*
+
+              𝐈 𝐀𝐌 𝐃𝐀𝐑𝐊-𝐍𝐄𝐓𝐇𝐔-𝐌𝐃 𝐖𝐇𝐀𝐓𝐒𝐀𝐏𝐏 𝐁𝐎𝐓
+
+              𝐂𝐑𝐄𝐀𝐓𝐄𝐃 𝐁𝐘 𝐍𝐄𝐓𝐇𝐌𝐈𝐊𝐀 𝐌𝐀𝐈𝐍...
+              
+             
+*ʏᴏᴜᴛᴜʙᴇ :* https://www.youtube.com/@SlNethuMax
+      
+*ᴡʜᴀᴛꜱᴀᴘᴘ ᴄʜᴀɴɴᴇʟ :* https://whatsapp.com/channel/0029VagCogPGufJ3kZWjsW3A
+
+              
+> ᴘᴀᴡᴇʀᴇᴅ ʙʏ ɴᴇᴛʜᴍɪᴋᴀ ᴍᴀɪɴ`
+
+return await conn.sendMessage(from,{image: {url: `https://iili.io/dbFAKoG.jpg`},caption:about},{quoted: mek})
+
+}catch(e){
+
+console.log(e)
+
+reply(`${e}`)
+
+}
+
+})
+
+//====================== support command ===================
+
+const config = require('../config')
+
+const {cmd , commands} = require('../command')
+
+
+
+cmd({
+
+    pattern: "support",
+
+    desc: "To get the bot informations.",
+
+    react: "⛓",
+
+    category: "main",
+
+    filename: __filename
+
+},
+
+async(conn, mek, m,{from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply}) => {
+
+try{
+
+
+
+let about = ` *👋 Hello ${pushname}*
+
+*❖ DARK-NETHU-MD Support Channels ❖*
+
+*Youtube Channel Link:* https://www.youtube.com/@SlNethuMax
+
+*Whatsapp Channel Link:* https://whatsapp.com/channel/0029VagCogPGufJ3kZWjsW3A
+
+
+> ᴘᴀᴡᴇʀᴇᴅ ʙʏ ɴᴇᴛʜᴍɪᴋᴀ ᴍᴀɪɴ`
+
+return await conn.sendMessage(from,{image: {url: `https://iili.io/dbFAKoG.jpg`},caption:about},{quoted: mek})
+
+}catch(e){
+
+console.log(e)
+
+reply(`${e}`)
+
+}
+
+})
+
+//==================== all menu command =====================
+
+cmd({
+    pattern: "allmenu",
+    desc: "To get the menu.",
+    react: "📜",
+    category: "main",
+    filename: __filename
+},
+async(conn, mek, m,{from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply}) => {
+try{
+    
+let menu = {
+main: '',
+download: '',
+group: '',
+owner: '',
+convert: '',
+ai: '',
+tools: '',
+search: '',
+fun: '',
+voice: '',
+other: ''
+};
+
+for (let i = 0; i < commands.length; i++) {
+if (commands[i].pattern && !commands[i].dontAddCommandList) {
+menu[commands[i].category] += `.${commands[i].pattern}\n`;
+ }
+}
+
+let madeMenu = `
+👋 𝐇𝐄𝐋𝐋𝐎, ${pushname}!
+
+❖ 𝐃𝐀𝐑𝐊 𝐍𝐄𝐓𝐇𝐔 𝐌𝐃 ❖
+╭─「 ᴄᴏᴍᴍᴀɴᴅꜱ ᴘᴀɴᴇʟ 」
+│◈ яυηтιмє * ${runtime(process.uptime())}
+│◈ σωηєя ηαмє * ɴᴇᴛʜᴍɪᴋᴀ
+│◈ σωηєя ηυмвєя * 94718913389
+╰──────────●●►
+╭──────────●●►
+ 📥 *𝐃𝐨𝐰𝐧𝐥𝐨𝐚𝐝 𝐌𝐞𝐧𝐮*
+  ───────
+ ${menu.download}
+╰───────────●●►
+╭──────────●●►
+ 👾 *𝐀𝐢 𝐌𝐞𝐧𝐮*
+  ───────
+ ${menu.ai}
+╰───────────●●►
+╭──────────●●►
+ 🔧 *𝐌𝐚𝐢𝐧 𝐌𝐞𝐧𝐮*
+  ───────
+ ${menu.main}
+╰───────────●●►
+╭──────────●●►
+ 🎉 *𝐅𝐮𝐧 𝐌𝐞𝐧𝐮*
+  ───────
+ ${menu.fun}
+╰───────────●●►
+╭──────────●●►
+ 🔄 *𝐂𝐨𝐧𝐯𝐞𝐫𝐭 𝐌𝐞𝐧𝐮*
+  ───────
+ ${menu.convert}
+╰───────────●●►
+╭──────────●●►
+ 🔍 *𝐒𝐞𝐚𝐫𝐜𝐡 𝐌𝐞𝐧𝐮*
+  ───────
+ ${menu.search}
+╰───────────●●►
+╭──────────●●►
+ 👥 *𝐆𝐫𝐨𝐮𝐩 𝐌𝐞𝐧𝐮*
+  ───────
+ ${menu.group}
+╰───────────●●►
+╭──────────●●►
+ 🔒 *𝐎𝐰𝐧𝐞𝐫 𝐌𝐞𝐧𝐮*
+  ───────
+ ${menu.owner}
+╰───────────●●►
+╭──────────●●►
+ ⚙️ *𝐎𝐭𝐡𝐞𝐫 𝐌𝐞𝐧𝐮*
+  ───────
+ ${menu.other}
+╰───────────●●►
+╭──────────●●►
+ 🛠️ *𝐓𝐨𝐨𝐥𝐬 𝐌𝐞𝐧𝐮*
+  ───────
+ ${menu.tools}
+╰───────────●●►
+
+
+> ᴘᴀᴡᴇʀᴇᴅ ʙʏ ɴᴇᴛʜᴍɪᴋᴀ ᴍᴀɪɴ`
+
+return await conn.sendMessage(from,{image: {url: `https://iili.io/dbFAKoG.jpg`},caption:madeMenu},{quoted: mek})
+}catch(e){
+console.log(e)
+reply(`𝔼𝕣𝕣𝕣𝕠𝕣`)
+}
+})
+
+
+
+
+
+
+
+
