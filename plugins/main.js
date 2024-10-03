@@ -184,7 +184,7 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
 
 > ᴘᴀᴡᴇʀᴇᴅ ʙʏ ɴᴇᴛʜᴍɪᴋᴀ ᴍᴀɪɴ`);
                         break;
-                    case '6':               
+                    case '7':               
                         reply(`*◈╾──NETHU MAIN MENU──╼◈*
 
 ╭────────●●►
@@ -216,7 +216,7 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
 
 > ᴘᴀᴡᴇʀᴇᴅ ʙʏ ɴᴇᴛʜᴍɪᴋᴀ ᴍᴀɪɴ`);
                         break;
-                    case '7':               
+                    case '8':               
                         reply(`*◈╾──NETHU GROUP MENU──╼◈*
 
 ╭────────●●►
@@ -257,7 +257,7 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
 
 > ᴘᴀᴡᴇʀᴇᴅ ʙʏ ɴᴇᴛʜᴍɪᴋᴀ ᴍᴀɪɴ`);
                        break;
-                    case '8':               
+                    case '6':               
                         reply(`*◈╾──NETHU FUN MENU──╼◈*
 
 ╭────────●●►
@@ -310,3 +310,28 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
         reply('An error occurred while processing your request.');
     }
 });
+//======================= system command =====================
+
+cmd({
+    pattern: "system",
+    alias: ["status","botinfo"],
+    desc: "check up time",
+    category: "main",
+    react: "🕹️",
+    filename: __filename
+},
+async(conn, mek, m,{from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply}) => {
+try{ 
+
+let status =` 
+
+ *⏳Uptime*:  ${runtime(process.uptime())}    
+ *📟Ram usage*: ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB
+ *⚙️HostName*: ${os.hostname()}
+ *👨‍💻Owner*: ɴᴇᴛʜᴜ ᴍᴀx 
+ *🧬Version*: 2.0.0
+    
+> ©ᴘᴏᴡᴇʀᴇᴅ ʙʏ ɴᴇᴛʜᴍɪᴋᴀ ᴍᴀɪɴ
+`
+const imageUrl='https://iili.io/dbFAKoG.jpg';
+    await conn.sendMessage(from,{image:{url:imageUrl},caption:status},{quoted:mek||null})}catch(e){console.log(e);reply(`Error: ${e}`);}});
