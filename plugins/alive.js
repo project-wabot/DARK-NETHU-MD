@@ -13,13 +13,12 @@ try{
 
 let des = `*👋 Hello ${pushname} I'm alive now*
 
-*╭─「 ALIVE 」
-*│◈ 𝙱𝙾𝚃 𝙽𝙰𝙼𝙴 :* ᴅᴀʀᴋ ɴᴇᴛʜᴜ ᴍᴅ
-*│◈ 𝙾𝚆𝙽𝙴𝚁 𝙽𝙰𝙼𝙴 :*ɴᴇᴛʜᴍɪᴋᴀ ᴍᴀɪɴ
+*╭─「 ALIVE 」*
+*│◈ 𝙱𝙾𝚃 𝙽𝙰𝙼𝙴* :ᴅᴀʀᴋ ɴᴇᴛʜᴜ ᴍᴅ
+*│◈ 𝙾𝚆𝙽𝙴𝚁 𝙽𝙰𝙼𝙴* :ɴᴇᴛʜᴍɪᴋᴀ
 *╰──────────●●►*
 *╭──────────●●►*
 *│ 𝚄𝙿𝙳𝙰𝚃𝙴 𝙲𝙷𝙰𝙽𝙿𝙾𝙽𝙴𝙻:* https://whatsapp.com/channel/0029VagCogPGufJ3kZWjsW3A
-*│
 *│ 𝙶𝙸𝚃𝙷𝚄𝙱:* https://github.com/project-wabot/DARK-NETHU-MD
 *╰──────────●●►*
 
