@@ -83,7 +83,7 @@ let up = `*❖ DARK-NETHU-MD ❖ Connected Successfully!* ✅
 
 > *ᴘᴏᴡᴇʀᴇᴅ ʙʏ ɴᴇᴛʜᴍɪᴋᴀ ᴍᴀɪɴ*`;
 
-conn.sendMessage(ownerNumber + "@s.whatsapp.net", { image: { url: `https://files.catbox.moe/172u47.jpg` }, caption: up })
+conn.sendMessage(ownerNumber + "@s.whatsapp.net", { image: { url: `https://iili.io/dbFAKoG.jpg` }, caption: up })
 
 }
 })
