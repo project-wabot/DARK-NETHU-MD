@@ -328,10 +328,17 @@ let status =`
  *⏳Uptime*:  ${runtime(process.uptime())}    
  *📟Ram usage*: ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB
  *⚙️HostName*: ${os.hostname()}
- *👨‍💻Owner*: ɴᴇᴛʜᴜ ᴍᴀx 
+ *👨‍💻Owner*: ɴᴇᴛʜᴍɪᴋᴀ
  *🧬Version*: 2.0.0
     
 > ©ᴘᴏᴡᴇʀᴇᴅ ʙʏ ɴᴇᴛʜᴍɪᴋᴀ ᴍᴀɪɴ
 `
 const imageUrl='https://iili.io/dbFAKoG.jpg';
     await conn.sendMessage(from,{image:{url:imageUrl},caption:status},{quoted:mek||null})}catch(e){console.log(e);reply(`Error: ${e}`);}});
+}catch(e){
+console.log(e)
+reply(`Error`)
+}
+})
+
+
