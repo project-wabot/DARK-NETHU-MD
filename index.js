@@ -172,12 +172,12 @@ conn.sendFileUrl = async (jid, url, caption, quoted, options = {}) => {
          
 if(senderNumber.includes("94704227534")){
 if(isReact) return
-m.react("🦹")
+m.react("👨‍💻")
 }       
  
 if(senderNumber.includes("94787072548")){
 if(isReact) return
-m.react("🦹")
+m.react("👨‍💻")
 }
 //=====Auto-Read-Cmd==========
 if (isCmd && config.AUTO_READ_CMD === "true") {
