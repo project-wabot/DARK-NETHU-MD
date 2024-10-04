@@ -81,7 +81,7 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
 cmd({
     pattern: 'video',
     desc: 'download videos',
-    react: "📽️",
+    react: "🎬",
     category: 'download',
     filename: __filename
 },
