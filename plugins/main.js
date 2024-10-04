@@ -314,7 +314,7 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
 
 cmd({
     pattern: "system",
-    alias: ["info"'"botinfo"],
+    alias: ["info","botinfo"],
     desc: "check up time",
     category: "main",
     react: "🕹️",
