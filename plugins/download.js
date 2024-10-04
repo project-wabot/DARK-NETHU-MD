@@ -19,24 +19,26 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
         const data = search.videos[0];
         const url = data.url;
 
-        let desc = `*❖ *
+        let desc = `*❖ DARK NETHU MD SONG DOWNLOADER ❖*
 
-🎼⚙️ TITLE - ${data.title}
+➥ TITLE - ${data.title}
 
-🎼⚙️ VIEWS - ${data.views}
+➥ VIEWS - ${data.views}
 
-🎼⚙️ DESCRIPTION - ${data.description}
+➥ DESCRIPTION - ${data.description}
 
-🎼⚙️ TIME - ${data.timestamp}
+➥ TIME - ${data.timestamp}
 
-🎼⚙️ AGO - ${data.ago}
+➥ AGO - ${data.ago}
 
-*Reply This Message With Option*
+💻 Github:https://github.com/project-wabot/DARK-NETHU-MD
 
-*1 Audio With Normal Format*
-*2 Audio With Document Format*
+*Choose Your Download Format*
 
-*©Qᴜᴇᴇɴ ᴋʏʟɪᴇ-ᴍᴅ ʙʏ ꜱᴀʜᴀꜱ ᴛᴇᴄʜッ*`;
+*1 Audio File🎶*
+*2 Document File📁*
+
+> ᴘᴀᴡᴇʀᴇᴅ ʙʏ ɴᴇᴛʜᴍɪᴋᴀ ᴍᴀɪɴ`;
 
         const vv = await conn.sendMessage(from, { image: { url: data.thumbnail }, caption: desc }, { quoted: mek });
 
