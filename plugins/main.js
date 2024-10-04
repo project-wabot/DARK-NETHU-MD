@@ -335,27 +335,29 @@ let status =`
 `
 const imageUrl='https://iili.io/dbFAKoG.jpg';
     await conn.sendMessage(from,{image:{url:imageUrl},caption:status},{quoted:mek||null})}catch(e){console.log(e);reply(`Error: ${e}`);}});
-//=================== ping command ========================
+//=================== ping command =======================
 
 cmd({
     pattern: "ping",
-    desc: "Check bot's response time.",
-    category: "main",
     react: "⚡",
+    alias: ["speed"],
+    desc: "Check bot\'s ping",
+    category: "main",
+    use: '.ping',
     filename: __filename
 },
-async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
-    try {
-        const startTime = Date.now()
-        const message = await conn.sendMessage(from, { text: '*Testing pining...*' })
-        const endTime = Date.now()
-        const ping = endTime - startTime
-        await conn.sendMessage(from, { text: `*📍 Pong : ${ping}ms*` }, { quoted: message })
-    } catch (e) {
-        console.log(e)
-        reply(`${e}`)
-    }
+async(conn, mek, m,{from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply}) => {
+try{
+var inital = new Date().getTime();
+let ping = await conn.sendMessage(from , { text: '```Pinging To index.js!!!```'  }, { quoted: mek } )
+var final = new Date().getTime();
+return await conn.edit(ping, '*Pong*\n *' + (final - inital) + ' ms* ' )
+} catch (e) {
+reply(`${e}`)
+console.log(e)
+}
 })
+
 //================ run time ======================
 
 cmd({
