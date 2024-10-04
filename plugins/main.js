@@ -314,7 +314,7 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
 
 cmd({
     pattern: "system",
-    alias: ["status","botinfo"],
+    alias: ["info"'"botinfo"],
     desc: "check up time",
     category: "main",
     react: "🕹️",
@@ -346,6 +346,8 @@ cmd({
 },
 async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
     try {
+        const startTime = Date.now()
+        const message = await conn.sendMessage(from, { text: '*Testing pining...*' })
         const endTime = Date.now()
         const ping = endTime - startTime
         await conn.sendMessage(from, { text: `*📍 Pong : ${ping}ms*` }, { quoted: message })
@@ -357,8 +359,8 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
 //================ run time ======================
 
 cmd({
-    pattern: "runtime",
-    alias: ["status","botinfo"],
+    pattern: "status",
+    alias: ["runtime","botinfo"],
     desc: "check up time",
     category: "main",
     react: "⏰",
@@ -397,7 +399,7 @@ try{
 
 
 
-let about = ` *👋 𝗛𝗘𝗟𝗟𝗢 𝗧𝗛𝗘𝗜𝗥${senderNumber}*
+let about = ` *👋 𝗛𝗘𝗟𝗟𝗢 𝗧𝗛𝗘𝗜𝗥 ${senderNumber}*
 
               𝐈 𝐀𝐌 𝐃𝐀𝐑𝐊-𝐍𝐄𝐓𝐇𝐔-𝐌𝐃 𝐖𝐇𝐀𝐓𝐒𝐀𝐏𝐏 𝐁𝐎𝐓
 
