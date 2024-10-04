@@ -1,6 +1,6 @@
-
 //========= alive command ===========
-const {readEnv} require('../lib/database')
+
+const config = require('../config')
 const {cmd , commands} = require('../command')
 
 cmd({
@@ -28,8 +28,7 @@ let des = `*👋 Hello ${pushname} I'm alive now*
 
 > ᴘᴏᴠᴇʀᴇᴅ ʙʏ ɴᴇᴛʜᴍɪᴋᴀ ᴍᴀɪɴ
 `
-
-return await conn.sendMessage(from,{image: {url: `https://iili.io/dbFAKoG.jpg`},caption: des},{quoted: mek})
+return await conn.sendMessage(from,{image: {url: config.ALIVE_IMG},caption: des},{quoted: mek})
 }catch(e){
 console.log(e)
 reply(`${e}`)
@@ -37,6 +36,7 @@ reply(`${e}`)
 })
 
 //============= menu command ================
+
 const os = require("os")
 const {runtime} = require('../lib/functions')
 
