@@ -4,7 +4,7 @@ const { cmd } = require('../command');
 
 cmd({
     pattern: "update",
-    alias: ["updateenv"],
+    alias: ["updateenv","nethu"],
     desc: "Check and update environment variables",
     category: "owner",
     filename: __filename,
