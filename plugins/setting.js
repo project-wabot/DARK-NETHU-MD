@@ -41,18 +41,18 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
 let autoreact = config.AUTO_REACT === 'true' ? '♻️ 𝙾𝙽' : '🚫 𝙾𝙵𝙵';
 
         const vv = await conn.sendMessage(from, {
-            image: { url: 'https://i.ibb.co/WxQpJp0/IMG-20240917-WA0052.jpg' },
-            caption: `✸ℤ𝔸𝕀ℝ𝕆 𝕄𝔻 𝔹𝕆𝕋✸ 𝗦𝗘𝗧𝗧𝗜𝗡𝗚𝗦 ⚙️\n
+            image: { url: 'https://iili.io/dbFAKoG.jpg' },
+            caption: `❖ 𝐃𝐀𝐑𝐊 𝐍𝐄𝐓𝐇𝐔 𝐒𝐄𝐓𝐓𝐈𝐍𝐆 ❖\n
 ♻️ *මෙම පනිවිඩය  විනාඩි 5 කින් ස්වයංක්‍රීයව මකා දමයි*🚫
 ┏━━━━━━━━━━━━━━━━━━┓
 ┃╭┈────────━━━━───╮
 ┣┣⃟⚟➺ 𝚆𝙾𝚁𝙺 𝚃𝚈𝙿𝙴 : *${work}*
-┣┣⃟⚟➺𝙰𝚄𝚃𝙾 𝚅𝙾𝙸𝙲𝙴 : *${autoVoice}*
-┣┣⃟⚟➺ 𝙰𝚄𝚃𝙾 𝚂𝚃𝙲𝙺𝙴𝚁 :${autoSticker}*
+┣┣⃟⚟➺ 𝙰𝚄𝚃𝙾 𝚅𝙾𝙸𝙲𝙴 : *${autoVoice}*
+┣┣⃟⚟➺ 𝙰𝚄𝚃𝙾 𝚂𝚃𝙲𝙺𝙴𝚁 : *${autoSticker}*
 ┣┣⃟⚟➺ 𝙰𝚄𝚃𝙾 𝚁𝙴𝙿𝙻𝚈 : *${autoReply}*
 ┣┣⃟⚟➺ 𝙰𝚄𝚃𝙾 𝚂𝙴𝙴𝙽 𝚂𝚃𝙰𝚃𝚄𝚂 : *${autoStatus}*
 ┣┣⃟⚟➺ 𝙰𝚄𝚃𝙾 𝙰𝚄𝚃𝙾 𝚁𝙴𝙰𝙲𝚃 : *${autoreact}*
-┣┣⃟⚟➺𝙰𝚄𝚃𝙾 𝙾𝚆𝙽𝙴𝚁 𝚁𝙴𝙰𝙲𝚃 : *${ownerreact}*
+┣┣⃟⚟➺ 𝙰𝚄𝚃𝙾 𝙾𝚆𝙽𝙴𝚁 𝚁𝙴𝙰𝙲𝚃 : *${ownerreact}*
 ┃┗━━━━━━━━━━━━━━━┛
 ┗━━━━━━━━━━━━━━━━━━┛
 
@@ -108,56 +108,56 @@ let autoreact = config.AUTO_REACT === 'true' ? '♻️ 𝙾𝙽' : '🚫 𝙾�
             if (msg.message.extendedTextMessage.contextInfo && msg.message.extendedTextMessage.contextInfo.stanzaId === vv.key.id) {
                 switch (selectedOption) {
                     case '1.1':
-                        reply('.vimau MODE:public');
+                        reply('.update MODE:public');
                         reply('.restart');
                         break;
                     case '1.2':
-                        reply('.vimau MODE:private');
+                        reply('.update MODE:private');
                         reply('.restart');
                         break;
                     case '1.3':
-                        reply('.vimau MODE:groups');
+                        reply('.update MODE:groups');
                         reply('.restart');
                         break;
                     case '1.4':
-                        reply('.vimau MODE:inbox');
+                        reply('.update MODE:inbox');
                         reply('.restart');
                         break;
                     case '2.1':
-                        reply('.vimau AUTO_VOICE:true');
+                        reply('.update AUTO_VOICE:true');
                         break;
                     case '2.2':
-                        reply('.vimau AUTO_VOICE:false');
+                        reply('.update AUTO_VOICE:false');
                         break;
                     case '3.1':
-                        reply('.vimau AUTO_STICKER:true');
+                        reply('.update AUTO_STICKER:true');
                         break;
                     case '3.2':
-                        reply('.vimau AUTO_STICKER:false');
+                        reply('.update AUTO_STICKER:false');
                         break;
                     case '4.1':
-                        reply('.vimau AUTO_REPLY:true');
+                        reply('.update AUTO_REPLY:true');
                         break;
                     case '4.2':
-                        reply('.vimau AUTO_REPLY:false');
+                        reply('.update AUTO_REPLY:false');
                         break;
                     case '5.1':
-                        reply('.vimau AUTO_READ_STATUS:true');
+                        reply('.update AUTO_READ_STATUS:true');
                         break;
                     case '5.2':
-                        reply('.vimau AUTO_READ_STATUS:false');
+                        reply('.update AUTO_READ_STATUS:false');
                         break;
                     case '6.1':
-                        reply('.vimau AUTO_REACT:true');
+                        reply('.update AUTO_REACT:true');
                         break;
                     case '6.2':
-                        reply('.vimau AUTO_REACT:false');
+                        reply('.update AUTO_REACT:false');
                         break;
                     case '7.1':
-                        reply('.vimau OWNER_REACT:true');
+                        reply('.update OWNER_REACT:true');
                         break;
                     case '7.2':
-                        reply('.vimau OWNER_REACT:false');
+                        reply('.update OWNER_REACT:false');
                         break;
                     default:
                         reply("Invalid option. Please select a valid option🔴");
