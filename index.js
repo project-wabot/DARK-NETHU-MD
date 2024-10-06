@@ -167,26 +167,45 @@ conn.sendFileUrl = async (jid, url, caption, quoted, options = {}) => {
                 return conn.sendMessage(jid, { audio: await getBuffer(url), caption: caption, mimetype: 'audio/mpeg', ...options }, { quoted: quoted, ...options })
               }
             }
-            
-//========OwnerReact========            
-         
-if(senderNumber.includes("94704227534")){
-if(isReact) return
-m.react("👨‍💻")
-}       
- 
-if(senderNumber.includes("94787072548")){
-if(isReact) return
-m.react("👨‍💻")
-}
+
+
+
+const config = await readEnv();
+
+        
 //=====Auto-Read-Cmd==========
+
+        
 if (isCmd && config.AUTO_READ_CMD === "true") {
               await conn.readMessages([mek.key])  // Mark command as read
 }
-//Auto-StatusDL============== 
+        
+//Auto-reaction============== 
+
+        
+if (config.AUTO_REACT === 'true') { 
+  if (isReact) return;
+  const emojis = ["🎨", "🔥", "✨", "🔮", "♠️", "🪄", "🔗", "🫧", "🪷", "🦠", "🌺", "🐬", "🦋", "🍁", "🌿", "🍦", "🌏", "✈️", "❄️"];
+  
+  emojis.forEach(emoji => {
+    m.react(emoji);
+  });
+}    
+
+//==========owner reaction===========
+
+        
+if(senderNumber.includes(ownerNumber))
+if (config.OWNER_REACT === 'true'){
+if(isReact) return
+m.react("👨‍💻")
+}
+
+
         
 //=====================✓
-if (config.AUTO_VOICE === 'false') {
+        
+if (config.AUTO_VOICE === 'true') {
 const url = 'https://raw.githubusercontent.com/DarkYasiyaofc/VOICE/main/Voice-Raw/FROZEN-V2'
 let { data } = await axios.get(url)
 for (vr in data){
