@@ -3,7 +3,7 @@ const {cmd , commands} = require('../command')
 const yts = require('yt-search');
 const fg = require('api-dylux');
 
-// -------- Song Download --------
+// ---------------------- Song Download -----------------------
 cmd({
     pattern: 'song',
     desc: 'download songs',
@@ -211,3 +211,124 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
         reply('An error occurred while processing your request.');
     }
 });
+
+//=========================== tiktok downloader =========================
+
+// FETCH API URL
+let baseUrl;
+(async () => {
+    let baseUrlGet = await fetchJson(`https://raw.githubusercontent.com/prabathLK/PUBLIC-URL-HOST-DB/main/public/url.json`)
+    baseUrl = baseUrlGet.api
+})();
+//tiktok downloader
+cmd({
+    pattern: "tiktok",
+    alias: ["tt"],
+    desc: "Download tt videos",
+    category: "download",
+    react: "📥",
+    filename: __filename
+},
+async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
+    try {
+        if (!q || !q.startsWith("https://")) return reply("Please provide a valid Tiktok video URL!");
+        const data = await fetchJson(`${baseUrl}/api/tiktokdl?url=${q}`);
+        let desc = ` *❖ DARK-NETHU-MD TIKTOK DOWNLOADER ❖*
+
+*🌟 Choose Your Download Format*
+
+*1 Download Video With Watermark*
+*2 Download Video Without Watermark*
+*3 Download Audio*
+
+> ᴘᴀᴡᴇʀᴇᴅ ʙʏ ɴᴇᴛʜᴍɪᴋᴀ ᴍᴀɪɴ`;
+
+        const vv = await conn.sendMessage(from, { image: { url: "https://iili.io/dbFAKoG.jpg"}, caption: desc }, { quoted: mek });
+
+        conn.ev.on('messages.upsert', async (msgUpdate) => {
+            const msg = msgUpdate.messages[0];
+            if (!msg.message || !msg.message.extendedTextMessage) return;
+
+            const selectedOption = msg.message.extendedTextMessage.text.trim();
+
+            if (msg.message.extendedTextMessage.contextInfo && msg.message.extendedTextMessage.contextInfo.stanzaId === vv.key.id) {
+                switch (selectedOption) {
+                    case '1':
+                        await conn.sendMessage(from, { video: { url: data.data.wm }, mimetype: "video/mp4", caption: "*ᴘᴀᴡᴇʀᴇᴅ ʙʏ ɴᴇᴛʜᴍɪᴋᴀ ᴍᴀɪɴ*" }, { quoted: mek })  
+                        break;
+                    case '2':               
+                    await conn.sendMessage(from, { video: { url: data.data.no_wm }, mimetype: "video/mp4", caption: "*ᴘᴀᴡᴇʀᴇᴅ ʙʏ ɴᴇᴛʜᴍɪᴋᴀ ᴍᴀɪɴ*" }, { quoted: mek })
+                        break;
+                    case '3':               
+                    await conn.sendMessage(from, { audio: { url: data.data.audio }, mimetype: "audio/mpeg" }, { quoted: mek })
+                        break;
+                    default:
+                        reply("Invalid option. Please select a valid option🔴");
+                }
+
+            }
+        });
+
+    } catch (e) {
+        console.error(e);
+        await conn.sendMessage(from, { react: { text: '❌', key: mek.key } })
+        reply('An error occurred while processing your request.');
+    }
+});
+
+//===================== img downloader =========================
+
+const axios = require('axios');
+const { Buffer } = require('buffer');
+
+const GOOGLE_API_KEY = 'AIzaSyDebFT-uY_f82_An6bnE9WvVcgVbzwDKgU'; // Replace with your Google API key
+const GOOGLE_CX = '45b94c5cef39940d1'; // Replace with your Google Custom Search Engine ID
+
+cmd({
+    pattern: "img",
+    desc: "Search and send images from Google.",
+    react: "🖼️",
+    category: "download",
+    filename: __filename
+},
+async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
+    try {
+        if (!q) return reply("Please provide a search query for the image.");
+
+        // Fetch image URLs from Google Custom Search API
+        const searchQuery = encodeURIComponent(q);
+        const url = `https://www.googleapis.com/customsearch/v1?q=${searchQuery}&cx=${GOOGLE_CX}&key=${GOOGLE_API_KEY}&searchType=image&num=5`;
+        
+        const response = await axios.get(url);
+        const data = response.data;
+
+        if (!data.items || data.items.length === 0) {
+            return reply("No images found for your query.");
+        }
+
+        // Send images
+        for (let i = 0; i < data.items.length; i++) {
+            const imageUrl = data.items[i].link;
+
+            // Download the image
+            const imageResponse = await axios.get(imageUrl, { responseType: 'arraybuffer' });
+            const buffer = Buffer.from(imageResponse.data, 'binary');
+
+            // Send the image with a footer
+            await conn.sendMessage(from, {
+                image: buffer,
+                caption: `
+🌟 *Image ${i + 1} from your search!* 🌟
+        *Enjoy these images! 📸*
+> ᴘᴀᴡᴇʀᴇᴅ ʙʏ ɴᴇᴛʜᴍɪᴋᴀ ᴍᴀɪɴ
+`
+}, { quoted: mek });
+}
+
+    } catch (e) {
+        console.error(e);
+        reply(`Error: ${e.message}`);
+    }
+});
+
+//============================ apk downloader ========================
