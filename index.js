@@ -1,3 +1,4 @@
+
 const {
 default: makeWASocket,
 useMultiFileAuthState,
@@ -5,12 +6,15 @@ DisconnectReason,
 jidNormalizedUser,
 getContentType,
 fetchLatestBaileysVersion,
+generateWAMessageFromContent,
+prepareWAMessageMedia,
 Browsers
 } = require('@whiskeysockets/baileys')
 
+
+const l = console.log
 const { getBuffer, getGroupAdmins, getRandom, h2k, isUrl, Json, runtime, sleep, fetchJson } = require('./lib/functions')
 const fs = require('fs')
-const l = console.log
 const P = require('pino')
 const config = require('./config')
 const qrcode = require('qrcode-terminal')
@@ -19,7 +23,12 @@ const { sms,downloadMediaMessage } = require('./lib/msg')
 const axios = require('axios')
 const { File } = require('megajs')
 
+
+
 const ownerNumber = ['94704227534']
+
+
+
 
 //===================SESSION-AUTH============================
 if (!fs.existsSync(__dirname + '/session/creds.json')) {
@@ -32,6 +41,11 @@ fs.writeFile(__dirname + '/session/creds.json', data, () => {
 console.log("Session downloaded ✅")
 })})}
 
+
+
+
+
+
 const express = require("express");
 const app = express();
 const port = process.env.PORT || 8000;
@@ -39,12 +53,21 @@ const port = process.env.PORT || 8000;
 //=============================================
 
 async function connectToWA() {
+
+//mongo dp
+
 const connectDB = require('./lib/mongodb')
 connectDB();
+
+//_______________
+
 const {readEnv} = require('./lib/database')
-const config = await readEnv()
+const config =await readEnv();
 const prefix = config.PREFIX
-console.log("Connecting wa bot 🧬...");
+//=====≈=====≈
+
+
+console.log("Connecting 𝘕𝘌𝘛𝘏𝘜 𝘔𝘋 𝘉𝘖𝘛...✅");
 const { state, saveCreds } = await useMultiFileAuthState(__dirname + '/session/')
 var { version } = await fetchLatestBaileysVersion()
 
@@ -72,21 +95,17 @@ require("./plugins/" + plugin);
 }
 });
 console.log('Plugins installed successful ✅')
-console.log('Bot connected to whatsapp ✅')
+console.log('𝘕𝘌𝘛𝘏𝘜 𝘔𝘋 𝘉𝘖𝘛 connected to whatsapp ✅')
 
-let up = `*❖ DARK-NETHU-MD ❖ Connected Successfully!* ✅ 
+let up = `*𝘕𝘌𝘛𝘏𝘜 𝘔𝘋 𝘉𝘖𝘛 𝘊𝘖𝘕𝘕𝘌𝘊𝘛𝘌𝘋*
 
-🌟 *Welcome to Nethu-MD!* 🌟
+> _.Menu = Get Bot All Commands_ ⤵
 
-*🔹 PREFIX:* .
+> _.Settings = Customize Bot Settings Work For Owner Only._❄️
 
-*🔹 OWNER:* 94704227534
+𝘉𝘖𝘛 𝘖𝘞𝘕𝘌𝘙 𝘉𝘠 𝘕𝘌𝘛𝘏𝘔𝘐𝘒𝘈 𝘔𝘈𝘐𝘕
 
-*🖇️Join My WhatsApp Channel✓💗 - :* https://whatsapp.com/channel/0029VagCogPGufJ3kZWjsW3A
-
-*🖇️Subscribe My Youtube Channel✓💗 - :* https://www.youtube.com/@SlNethuMax
-
-> *ᴘᴏᴡᴇʀᴇᴅ ʙʏ ɴᴇᴛʜᴍɪᴋᴀ ᴍᴀɪɴ*`;
+https://wa.me/94704227534`;
 
 conn.sendMessage(ownerNumber + "@s.whatsapp.net", { image: { url: `https://iili.io/dbFAKoG.jpg` }, caption: up })
 
@@ -99,13 +118,8 @@ mek = mek.messages[0]
 if (!mek.message) return	
 mek.message = (getContentType(mek.message) === 'ephemeralMessage') ? mek.message.ephemeralMessage.message : mek.message
 if (mek.key && mek.key.remoteJid === 'status@broadcast' && config.AUTO_READ_STATUS === "true"){
-await conn.readMessages([mek.key])
+await conn.readMessages([mek.key]) 
 }
-//=========autobio=======//
-if (config.AUTO_BIO === 'true'){
-               await
-conn.updateProfileStatus(`❖ 𝗗𝗔𝗥𝗞 𝗡𝗘𝗧𝗛𝗨 𝗠𝗗 ❖ 𝗖𝗼𝗻𝗻𝗲𝗰𝘁𝗲𝗱 𝗦𝘂𝗰𝗰𝗲𝘀𝗳𝘂𝗹𝗹𝘆!`)
- }
 const m = sms(conn, mek)
 const type = getContentType(mek.message)
 const content = JSON.stringify(mek.message)
@@ -135,17 +149,114 @@ const reply = (teks) => {
 conn.sendMessage(from, { text: teks }, { quoted: mek })
 }
 
-conn.edit = async (mek, newmg) => {
-                await conn.relayMessage(from, {
-                    protocolMessage: {
-                        key: mek.key,
-                        type: 14,
-                        editedMessage: {
-                            conversation: newmg
-                        }
-                    }
-                }, {})
-}
+
+
+
+            //Button 
+
+    conn.sendButtonMessage = async (jid, buttons, opts = {}) => {
+
+      let header;
+      if (opts?.video) {
+          var video = await prepareWAMessageMedia({
+              video: {
+                  url: opts && opts.video ? opts.video : ''
+              }
+          }, {
+              upload: conn.waUploadToServer
+          })
+          header = {
+              title: opts && opts.header ? opts.header : '',
+              hasMediaAttachment: true,
+              videoMessage: video.videoMessage,
+          }
+
+      } else if (opts?.image) {
+          var image = await prepareWAMessageMedia({
+              image: {
+                  url: opts && opts.image ? opts.image : ''
+              }
+          }, {
+              upload: conn.waUploadToServer
+          })
+          header = {
+              title: opts && opts.header ? opts.header : '',
+              hasMediaAttachment: true,
+              imageMessage: image.imageMessage,
+          }
+
+      } else {
+          header = {
+              title: opts && opts.header ? opts.header : '',
+              hasMediaAttachment: false,
+          }
+      }
+      let interactiveMessage;
+      if (opts && opts.contextInfo) {
+          interactiveMessage = {
+              body: {
+                  text: opts && opts.body ? opts.body : ''
+              },
+              footer: {
+                  text: opts && opts.footer ? opts.footer : ''
+              },
+              header: header,
+              nativeFlowMessage: {
+                  buttons: buttons,
+                  messageParamsJson: ''
+              },
+              contextInfo: opts && opts.contextInfo ? opts.contextInfo : ''
+          }
+      } else {
+          interactiveMessage = {
+              body: {
+                  text: opts && opts.body ? opts.body : ''
+              },
+              footer: {
+                  text: opts && opts.footer ? opts.footer : ''
+              },
+              header: header,
+              nativeFlowMessage: {
+                  buttons: buttons,
+                  messageParamsJson: ''
+              }
+          }
+      }
+
+      let message = generateWAMessageFromContent(jid, {
+          viewOnceMessage: {
+              message: {
+                  messageContextInfo: {
+                      deviceListMetadata: {},
+                      deviceListMetadataVersion: 2,
+                  },
+                  interactiveMessage: interactiveMessage
+              }
+          }
+      }, {
+
+      })
+
+      return await conn.relayMessage(jid, message["message"], {
+          messageId: message.key.id
+      })
+  }
+
+    //==========================
+
+
+
+
+
+
+
+
+
+
+
+
+//===========================
+
 conn.sendFileUrl = async (jid, url, caption, quoted, options = {}) => {
               let mime = '';
               let res = await axios.head(url)
@@ -170,19 +281,31 @@ conn.sendFileUrl = async (jid, url, caption, quoted, options = {}) => {
 
 
 
-const config = await readEnv();
+const deleteAfter = 5000; // Time in milliseconds (5 seconds)
 
-        
-//=====Auto-Read-Cmd==========
+// Function to check and auto-delete the message
+mekaAutoDelete = async (message) => {
+    try {
+        // Check if the message content is "."
+        if (message.body === ".") {
+            // Set a timeout to delete the message after 5 seconds
+            setTimeout(async () => {
+                await message.delete();
+            }, deleteAfter);
+        }
+    } catch (err) {
+        console.error("Error in auto-deleting message: ", err);
+    }
+};
 
-        
-if (isCmd && config.AUTO_READ_CMD === "true") {
-              await conn.readMessages([mek.key])  // Mark command as read
-}
-        
-//Auto-reaction============== 
 
-        
+
+  const config = await readEnv();
+             
+                
+
+
+
 if (config.AUTO_REACT === 'true') { 
   if (isReact) return;
   const emojis = ["🎨", "🔥", "✨", "🔮", "♠️", "🪄", "🔗", "🫧", "🪷", "🦠", "🌺", "🐬", "🦋", "🍁", "🌿", "🍦", "🌏", "✈️", "❄️"];
@@ -190,28 +313,32 @@ if (config.AUTO_REACT === 'true') {
   emojis.forEach(emoji => {
     m.react(emoji);
   });
-}    
-
-//==========owner reaction===========
-
-        
-if(senderNumber.includes(ownerNumber))
-if (config.OWNER_REACT === 'true'){
-if(isReact) return
-m.react("👨‍💻")
 }
 
 
-        
-//=====================✓
-        
-if (config.AUTO_VOICE === 'true') {
-const url = 'https://raw.githubusercontent.com/DarkYasiyaofc/VOICE/main/Voice-Raw/FROZEN-V2'
-let { data } = await axios.get(url)
-for (vr in data){
-if((new RegExp(`\\b${vr}\\b`,'gi')).test(body)) conn.sendMessage(from,{audio: { url : data[vr]},mimetype: 'audio/mpeg',ptt:true},{quoted:mek})   
- }}
-        
+if(senderNumber.includes(ownerNumber))
+if (config.OWNER_REACT === 'true'){
+if(isReact) return
+m.react("👑")
+}
+
+//============================================================================ 
+
+
+if(!isOwner && config.MODE === "private") return
+if(!isOwner && isGroup && config.MODE === "inbox") return
+if(!isOwner && !isGroup && config.MODE === "groups") return 
+
+
+
+
+
+
+
+
+//6666666⤵️⤵️⤵️⤵️⤵️⤵️⤵️
+
+
 const events = require('./command')
 const cmdName = isCmd ? body.slice(1).trim().split(" ")[0].toLowerCase() : false;
 if (isCmd) {
@@ -241,14 +368,141 @@ command.on === "sticker" &&
 mek.type === "stickerMessage"
 ) {
 command.function(conn, mek, m,{from, l, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply})
-}});
+}}); 
+
+/* const events = require('./command');
+
+// Get command name
+const cmdName = isCmd ? body.slice(1).trim().split(" ")[0].toLowerCase() : false;
+
+if (isCmd) {
+    // Find the matching command
+    const cmd = events.commands.find((cmd) => cmd.pattern === (cmdName)) || events.commands.find((cmd) => cmd.alias && cmd.alias.includes(cmdName));
+
+    if (cmd) {
+        if (cmd.react) conn.sendMessage(from, { react: { text: cmd.react, key: mek.key }});
+
+        try {
+            // Execute the command function
+            const msg = await cmd.function(conn, mek, m, {
+                from, quoted, body, isCmd, command, args, q, isGroup, 
+                sender, senderNumber, botNumber2, botNumber, pushname, 
+                isMe, isOwner, groupMetadata, groupName, participants, 
+                groupAdmins, isBotAdmins, isAdmins, reply
+            });
+
+            // Auto-delete the message after 5 seconds for everyone
+            if (msg && msg.key && msg.key.id) {
+                setTimeout(async () => {
+                    await conn.sendMessage(from, {
+                        delete: { id: msg.key.id, remoteJid: from, fromMe: true }
+                    });
+                }, 5000); // Auto delete after 5 seconds
+            }
+        } catch (e) {
+            console.error("[PLUGIN ERROR] " + e);
+        }
+    }
+}
+
+// Handle other commands based on body, image, text, etc.
+events.commands.map(async (command) => {
+    if (body && command.on === "body") {
+        const msg = await command.function(conn, mek, m, {
+            from, l, quoted, body, isCmd, command, args, q, 
+            isGroup, sender, senderNumber, botNumber2, botNumber, 
+            pushname, isMe, isOwner, groupMetadata, groupName, 
+            participants, groupAdmins, isBotAdmins, isAdmins, reply
+        });
+
+        // Auto-delete the message after 5 seconds
+        if (msg && msg.key && msg.key.id) {
+            setTimeout(async () => {
+                await conn.sendMessage(from, {
+                    delete: { id: msg.key.id, remoteJid: from, fromMe: true }
+                });
+            }, 5000);
+        }
+
+    } else if (mek.q && command.on === "text") {
+        const msg = await command.function(conn, mek, m, {
+            from, l, quoted, body, isCmd, command, args, q, 
+            isGroup, sender, senderNumber, botNumber2, botNumber, 
+            pushname, isMe, isOwner, groupMetadata, groupName, 
+            participants, groupAdmins, isBotAdmins, isAdmins, reply
+        });
+
+        // Auto-delete the message after 5 seconds
+        if (msg && msg.key && msg.key.id) {
+            setTimeout(async () => {
+                await conn.sendMessage(from, {
+                    delete: { id: msg.key.id, remoteJid: from, fromMe: true }
+                });
+            }, 5000);
+        }
+
+    } else if ((command.on === "image" || command.on === "photo") && mek.type === "imageMessage") {
+        const msg = await command.function(conn, mek, m, {
+            from, l, quoted, body, isCmd, command, args, q, 
+            isGroup, sender, senderNumber, botNumber2, botNumber, 
+            pushname, isMe, isOwner, groupMetadata, groupName, 
+            participants, groupAdmins, isBotAdmins, isAdmins, reply
+        });
+
+        // Auto-delete the message after 5 seconds
+        if (msg && msg.key && msg.key.id) {
+            setTimeout(async () => {
+                await conn.sendMessage(from, {
+                    delete: { id: msg.key.id, remoteJid: from, fromMe: true }
+                });
+            }, 5000);
+        }
+
+    } else if (command.on === "sticker" && mek.type === "stickerMessage") {
+        const msg = await command.function(conn, mek, m, {
+            from, l, quoted, body, isCmd, command, args, q, 
+            isGroup, sender, senderNumber, botNumber2, botNumber, 
+            pushname, isMe, isOwner, groupMetadata, groupName, 
+            participants, groupAdmins, isBotAdmins, isAdmins, reply
+        });
+
+        // Auto-delete the message after 5 seconds
+        if (msg && msg.key && msg.key.id) {
+            setTimeout(async () => {
+                await conn.sendMessage(from, {
+                    delete: { id: msg.key.id, remoteJid: from, fromMe: true }
+                });
+            }, 5000);
+        }
+    }
+}); */
+
+
+        //==============
+
 
 })
 }
 app.get("/", (req, res) => {
-res.send("hey,DARK-NETHU-MD bot started✅");
+res.send("𝘋𝘈𝘙𝘒 𝘕𝘌𝘛𝘏𝘜 𝘔𝘋 𝘉𝘖𝘛 started✅");
 });
 app.listen(port, () => console.log(`Server listening on port http://localhost:${port}`));
 setTimeout(() => {
 connectToWA()
-}, 4000);  
+}, 4000); 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
