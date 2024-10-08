@@ -7,6 +7,7 @@ cmd({
     alias: ["updateenv","nethu"],
     desc: "Check and update environment variables",
     category: "owner",
+    react: "🔰",
     filename: __filename,
 },
 async (conn, mek, m, { from, q, reply, isOwner }) => {
@@ -53,6 +54,17 @@ async (conn, mek, m, { from, q, reply, isOwner }) => {
 
     if (key === 'AUTO_READ_STATUS' && !['true', 'false'].includes(newValue)) {
         return reply("😓 *Invalid value for AUTO_READ_STATUS. Please use `true` or `false`.*");
+    }
+
+    if (key === 'AUTO_READ_CMD' && !['true', 'false'].includes(newValue)) {
+        return reply("😓 *Invalid value for AUTO_READ_STATUS. Please use `true` or `false`.*");
+    }
+
+    if (key === 'AUTO_TYPING' && !['true', 'false'].includes(newValue)) {
+        return reply("😓 *Invalid value for AUTO_TYPING. Please use `true` or `false`.*");
+    }
+    if (key === 'AUTO_VOICE' && !['true', 'false'].includes(newValue)) {
+        return reply("😓 *Invalid value for AUTO_VOICE. Please use `true` or `false`.*");
     }
 
     try {
