@@ -16,7 +16,7 @@
       "required": true
     },
     
-    "ALIVE_MSG": {
+    "MONGODB": {
       "description": "Put your alive msg here.",
       "required": true
     }   
