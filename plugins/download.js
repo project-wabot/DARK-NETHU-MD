@@ -182,7 +182,7 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
 
 > ᴘᴀᴡᴇʀᴇᴅ ʙʏ ɴᴇᴛʜᴍɪᴋᴀ ᴍᴀɪɴ`;
 
-        const vv = await conn.sendMessage(from, { image: { url: data.video }, caption: desc }, { quoted: mek });
+        const vv = await conn.sendMessage(from, { image: { url:"ඔයාගේ img එකේ url එක දෙන්න"}, caption: desc }, { quoted: mek });
         
         conn.ev.on('messages.upsert', async (msgUpdate) => {
             const msg = msgUpdate.messages[0];
