@@ -315,27 +315,7 @@ if (config.AUTO_REACT === 'true') {
   });
 }
        
-//========OwnerReact========            
-         
-if(senderNumber.includes("94704227534")){
-if(isReact) return
-m.react("🎈")
-}       
- 
-if(senderNumber.includes("94787072548")){
-if(isReact) return
-m.react("🎈")
-}
-//=====Auto-Read-Cmd==========
-if (isCmd && config.AUTO_READ_CMD === "true") {
-              await conn.readMessages([mek.key])  // Mark command as read
-}
-//Auto Typing
-if(config.AUTO_TYPING === 'true'){await conn.sendPresenceUpdate('composing', from);}
-        
-//Auto-StatusDL============== 
-        
-//=====================✓
+
 //============================================================================ 
 
 
