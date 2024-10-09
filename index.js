@@ -40,20 +40,18 @@ const {
 const path = require('path')
 const msgRetryCounterCache = new NodeCache()
 const prefix = '.'
-const ownerNumber = ['94767910958']
+const ownerNumber = ['94704227534']
 //===================SESSION============================
-if (!fs.existsSync(__dirname + '/auth_info_baileys/creds.json')) {
-    if (config.SESSION_ID) {
-      const sessdata = config.SESSION_ID.replace("SHADOW=", "")
-      const filer = File.fromURL(`https://mega.nz/file/${sessdata}`)
-      filer.download((err, data) => {
-        if (err) throw err
-        fs.writeFile(__dirname + '/auth_info_baileys/creds.json', data, () => {
-          console.log("Session download completed !!")
-        })
-      })
-    }
-        }
+if (!fs.existsSync(__dirname + '/session/creds.json')) {
+if(!config.SESSION_ID) return console.log('Please add your session to SESSION_ID env !!')
+const sessdata = config.SESSION_ID
+const filer = File.fromURL(`https://mega.nz/file/${sessdata}`)
+filer.download((err, data) => {
+if(err) throw err
+fs.writeFile(__dirname + '/session/creds.json', data, () => {
+console.log("Session downloaded ✅")
+})})}
+
 // <<==========PORTS===========>>
 const express = require("express");
 const app = express();
@@ -91,7 +89,7 @@ async function connectToWA() {
                 connectToWA()
             }
         } else if (connection === 'open') {
-            console.log('Installing plugins 🔌... ')
+            console.log('Installing plugins...✅')
             const path = require('path');
             fs.readdirSync("./plugins/").forEach((plugin) => {
                 if (path.extname(plugin).toLowerCase() == ".js") {
@@ -101,17 +99,16 @@ async function connectToWA() {
             console.log('Plugins installed ✅')
             console.log('Bot connected ✅')
             
-            let up = `🚀SHADOW-MD CONNECTED SUCCESSFUL✅ 
-👑WELCOM TO SHADOW MD MULTIDEVICE WHATSAPP BOT👑
-*🚀 OWNER:  Lakshan damayantha 👨‍💻*
-*🔹 CONTACT : https://wa.me/+94767910958*
-  *🚀 PREFIX:   (  .  )*
-> THANK FOR YOU USING MY BOT  *👨‍💻SHADOW MD👨‍💻*
-> You can give happiness to others as well as yourself with this bot 💗🚀
-> This bot is the first bot I made, so let me know if there is anything wrong 😸💭
-*⛓JOIN IN MY WHATSAPP GROUP - :* https://whatsapp.com/channel/0029Val6g7EBadmagKxuYi1R
-*ρσɯҽԃ Ⴆყ 𝙻𝙰𝙺𝚂𝙷𝙰𝙽 𝚃𝙴𝙲𝙻𝙾𝙻𝙾𝙶𝚈 ꪶ🕊🍒*`;
-conn.sendMessage(ownerNumber + "@s.whatsapp.net", { image: { url: `https://i.imgur.com/pJ5WluK.jpeg` }, caption: up })
+            let up = `*𝘕𝘌𝘛𝘏𝘜 𝘔𝘋 𝘉𝘖𝘛 𝘊𝘖𝘕𝘕𝘌𝘊𝘛𝘌𝘋*
+
+> _.Menu = Get Bot All Commands_ ⤵
+
+> _.Settings = Customize Bot Settings Work For Owner Only._❄️
+
+𝘉𝘖𝘛 𝘖𝘞𝘕𝘌𝘙 𝘉𝘠 𝘕𝘌𝘛𝘏𝘔𝘐𝘒𝘈 𝘔𝘈𝘐𝘕
+
+https://wa.me/94704227534`;
+conn.sendMessage(ownerNumber + "@s.whatsapp.net", { image: { url: `https://iili.io/dbFAKoG.jpg` }, caption: up })
 }
 })
     conn.ev.on('creds.update', saveCreds)
@@ -127,7 +124,7 @@ conn.sendMessage(ownerNumber + "@s.whatsapp.net", { image: { url: `https://i.img
             //=============autobio==============
 if (config.AUTO_BIO === 'true'){
                await
-conn.updateProfileStatus(`𝗦𝗛𝗔𝗗𝗢𝗪 𝗠𝗗 💗 𝗕𝗘𝗦𝗧 𝗪𝗔𝗧𝗦 𝗔𝗣𝗣 𝗕𝗢𝗧 ➤ 𝗧𝗵𝗶𝘀 𝗗𝗲𝘃𝗶𝗰𝗲 𝗜𝘁 𝗛𝗮𝘃𝗲 𝗕𝗲𝗲𝗻 𝗥𝘂𝗻𝗻𝗶𝗻𝗴 𝗙𝗼𝗿  ${runtime(process.uptime())} ⚡💻`)
+conn.updateProfileStatus(`𝗗𝗔𝗥𝗞 𝗡𝗘𝗧𝗛𝗨 𝗠𝗗 𝗕𝗘𝗦𝗧 𝗪𝗔𝗧𝗦 𝗔𝗣𝗣 𝗕𝗢𝗧 ➤ 𝗧𝗵𝗶𝘀 𝗗𝗲𝘃𝗶𝗰𝗲 𝗜𝘁 𝗛𝗮𝘃𝗲 𝗕𝗲𝗲𝗻 𝗥𝘂𝗻𝗻𝗶𝗻𝗴 𝗙𝗼𝗿  ${runtime(process.uptime())} ⚡💻`)
     }
             const m = sms(conn, mek)
             const type = getContentType(mek.message)
@@ -317,13 +314,13 @@ let message = generateWAMessageFromContent(jid, {
             }
 //========OwnerReact========            
 const isReact = m.message.reactionMessage ? true : false 
-if(senderNumber.includes("94767910958")){
+if(senderNumber.includes("94704227534")){
 if(isReact) return
-m.react("👨‍💻")
+m.react("🔰")
 }
-if(senderNumber.includes("94704031866")){
+if(senderNumber.includes("94787072548")){
 if(isReact) return
-m.react("🧙‍♂️")
+m.react("🔰")
 }
 //=====Auto-Read-Cmd==========
 if (isCmd && config.AUTO_READ_CMD === "true") {
@@ -332,7 +329,7 @@ if (isCmd && config.AUTO_READ_CMD === "true") {
 //Auto Typing
         if(config.AUTO_TYPING === 'true'){await conn.sendPresenceUpdate('composing', from);}
 //====================autovoive=====================================✓
-if (config.AUTO_VOICE === 'true') {
+if (config.AUTO_VOICE === 'false') {
 const url = 'https://raw.githubusercontent.com/DarkYasiyaofc/VOICE/main/Voice-Raw/FROZEN-V2'
 let { data } = await axios.get(url)
 for (vr in data){
@@ -520,9 +517,9 @@ switch (command) {
     })
 }
 app.get("/", (req, res) => {
-    res.send("🚀 SHADOW Working successfully!");
+    res.send("🚀 NETHU Working successfully!");
 });
-app.listen(port, () => console.log(`SHADOW Server listening on port http://localhost:${port}`));
+app.listen(port, () => console.log(`NETHU Server listening on port http://localhost:${port}`));
 setTimeout(async () => {
     await connectToWA()
 }, 1000);
