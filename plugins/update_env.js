@@ -56,17 +56,6 @@ async (conn, mek, m, { from, q, reply, isOwner }) => {
         return reply("😓 *Invalid value for AUTO_READ_STATUS. Please use `true` or `false`.*");
     }
 
-    if (key === 'AUTO_READ_CMD' && !['true', 'false'].includes(newValue)) {
-        return reply("😓 *Invalid value for AUTO_READ_STATUS. Please use `true` or `false`.*");
-    }
-
-    if (key === 'AUTO_TYPING' && !['true', 'false'].includes(newValue)) {
-        return reply("😓 *Invalid value for AUTO_TYPING. Please use `true` or `false`.*");
-    }
-    if (key === 'AUTO_VOICE' && !['true', 'false'].includes(newValue)) {
-        return reply("😓 *Invalid value for AUTO_VOICE. Please use `true` or `false`.*");
-    }
-
     try {
         // Check if the environment variable exists
         const envVar = await EnvVar.findOne({ key: key });
