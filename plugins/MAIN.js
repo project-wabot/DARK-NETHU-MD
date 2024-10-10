@@ -27,6 +27,19 @@ let des = `*👋 Hello ${pushname} I'm alive now*
 
 > ᴘᴏᴠᴇʀᴇᴅ ʙʏ ɴᴇᴛʜᴍɪᴋᴀ ᴍᴀɪɴ
 `
+    return await conn.sendButtonMessage(from, buttons, m, opts)	
+	await conn.sendMessage(from, {
+text: commandList,
+  contextInfo: {
+    mentionedJid: [ '' ],
+    groupMentions: [],
+    forwardingScore: 1111,
+    isForwarded: true,
+    forwardedNewsletterMessageInfo: {
+      newsletterJid: '120363316527550485@newsletter',
+      serverMessageId: 127
+    },
+      
 return await conn.sendMessage(from,{image: {url: config.ALIVE_IMG},caption: des},{quoted: mek})
 }catch(e){
 console.log(e)
