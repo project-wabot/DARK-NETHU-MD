@@ -46,7 +46,6 @@ text: commandList,
       newsletterJid: '120363316527550485@newsletter',
       serverMessageId: 127
     },
-{ quoted: mek})
 }catch(e){
 console.log(e)
 reply(`${e}`)
