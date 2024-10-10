@@ -27,6 +27,13 @@ let des = `*👋 Hello ${pushname} I'm alive now*
 
 > ᴘᴏᴠᴇʀᴇᴅ ʙʏ ɴᴇᴛʜᴍɪᴋᴀ ᴍᴀɪɴ
 `
+let opts = {
+                image: `https://i.imgur.com/Mkp0Z9o.jpeg`,
+                header: '',
+                footer: config.FOOTER,
+                body: sssf
+		}
+
     return await conn.sendButtonMessage(from, buttons, m, opts)	
 	await conn.sendMessage(from, {
 text: commandList,
@@ -39,8 +46,7 @@ text: commandList,
       newsletterJid: '120363316527550485@newsletter',
       serverMessageId: 127
     },
-      
-return await conn.sendMessage(from,{image: {url: config.ALIVE_IMG},caption: des},{quoted: mek})
+{ quoted: mek})
 }catch(e){
 console.log(e)
 reply(`${e}`)
